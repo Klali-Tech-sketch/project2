@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        body {
+            background-color: #20364B;
+        }
+.flex-container {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    padding-top: 20px;
+}
+.logo-container {
+    flex-basis: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    color: #fff;
+    
+}
+.sec1 {
+    flex-basis: 47%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: end;
+    transition: all 0.4s ease;
+}
+.search-wrapper {
+    position: relative;
+}
+.search-container {
+    flex-basis: 3%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: yellow;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 0 10px 2px rgb(223, 238, 18);
+
+}
+.search-container:hover {
+    transform: scale(1.1);
+}
+.mark {
+    color: yellow;
+}
+div a {
+    text-decoration: none;
+    color: whitesmoke;
+    margin-right: 40px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+div a:hover {
+    color: yellow;
+}
+select, option{
+    text-decoration: none;
+    border: none;
+    color: #fff;
+    background-color: #20364B;
+    margin-right: 40px;
+}
+.active {
+    color: #fff;
+    border-bottom: 2px solid yellow;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+select:hover {
+    background-color: rgba(255, 255, 0, 0.1);
+}
+.active {
+    color: #fff;
+    border-bottom: 2px solid yellow;
+}
+h1 {
+    color: yellow;
+    font-weight: bolder;
+    font-size: 50px;
+    line-height: 40px;
+}
+.news {
+    color: #fff;
+}
+.container1 {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+.text {
+    flex: 1 1 50%;
+    margin: 0 5px 0px;
+    position: relative;
+    bottom: 90px;
+}
+.image {
+    flex: 1 1 50%;
+
+}
+.image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+input {
+    padding: 10px 20px;
+    margin-top: 20px;
+    width: 300px;
+    border-radius: 18px;
+    border: 1px solid grey;
+    transition: all 0.3s ease;
+}
+input:focus {
+outline: none;
+border-color: yellow;
+}
+button {
+    background-color: yellow;
+    border-radius: 18px;
+    width: 100px;
+    padding: 10px;
+    border: 1px solid grey;
+    margin-top: 20px;
+    font-weight: bolder;
+    font-size: 17px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+button:hover {
+    background-color: rgb(197, 197, 81);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.logo {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    bottom: 40px;
+}
+.create, .mark {
+    display: flex;
+    position: relative;
+    bottom: 150px;
+    left: 90px;
+}
+.image {
+    position: relative;
+    bottom: 80px;
+    width: 100%;
+    height: auto;
+}
+#search-toggle {
+    display: none;
+}
+.search-input {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 0;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+#search-toggle:checked ~ .search-input {
+width: 50%;
+padding: 0 20px;
+}
+.search-input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    padding: 0 15px;
+    color: #20364B;
+}
+.hamburger {
+    display: none;
+    background: yellow;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #20364B;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    margin: 3px 0;
+}
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+#mobile-toggle {
+    display: none;
+}
+#mobile-toggle:checked ~ .mobile-menu {
+    transform: translateX(0);
+}
+#mobile-toggle:checked + .hamburger span:nth-child(1){
+transform: rotate(-45deg) translate(-5px, 6px);
+}
+#mobile-toggle:checked + .hamburger span:nth-child(2){
+    opacity: 0;
+}
+#mobile-toggle:checked + .hamburger span:nth-child(3){
+transform: rotate(45deg) translate(-5px, -6px);
+}
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    background: #20364B;
+    z-index: 999;
+    padding: 100px 30px 30px;
+    transition: transform 0.4s ease;
+    z-index: 1000;
+    transform: translateX(-100%);
+    overflow-y: auto;
+}
+#mobile-toggle:checked ~ .mobile-menu{
+    transform: translateX(0);
+}
+.mobile-menu a, .mobile-menu select 
+{
+    display: block;
+    margin: 20px 0;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+.mobile-menu a:hover, .mobile-menu select:hover {
+background: rgba(255, 255, 0, 0.1);
+}
+.mobile-menu.active {
+    background: rgba(255, 255, 0, 0.1);
+}
+.mobile-menu select {
+    background-color: #20364B;
+    color: #fff;
+    border: none;
+    appearance: none;
+}
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    z-index: 1002;
+    border: none;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    background: rgba(0, 0, 0, 0.7);
+}
+#mobile-toggle:checked ~ .overlay {
+    display: block;
+}
+.content{
+    color: #fff;
+
+}
+@media screen and (max-width: 725px){
+    .sec1 {
+        display: none;
+    }
+    .image img {
+    height: 350px;
+}
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        /* right: 90px;
+        top: 300px; */
+    }
+    .search-wrapper {
+        position: static;
+        
+    }
+    .mobile-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+    }
+    #mobile-toggle:checked ~ .mobile-menu {
+        transform: translateX(0);
+    }
+    input {
+        width: 100%;
+    }
+    h1 {
+        font-size: 30px;
+}
+.container1 {
+    flex-direction: column;
+}
+.text {
+    order: 2;
+    flex-direction: row;
+}
+.image {
+    order: 1;
+    flex-direction: row;
+}
+}
+@media screen and (max-width: 850px){
+    .sec1 {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        /* right: 90px;
+        top: 300px; */
+    }
+    .search-wrapper {
+        position: static;
+        
+    }
+    .mobile-menu {
+        display: block;
+    }
+    input {
+        width: 100%;
+    }
+    h1 {
+        font-size: 30px;
+}
+.container1 {
+    flex-direction: column;
+}
+.text {
+    order: 2;
+    flex-direction: row;
+}
+.image {
+    order: 1;
+    flex-direction: row;
+}
+.image img {
+    height: 450px;
+}
+}
+    </style>
+</head>
+<body>
+    <header class="flex-container">
+        <div class="logo-container">
+<img src="C1.png" alt="" class="logo"><span class="create">Creative <br> </span><span class="mark">Marketing</span>
+</div>
+<div class="sec1">
+    <a href="#" class="active">Home</a>
+    <select name="" id="">
+        <option value="">Services</option>
+        <option value="lorem">Lorem</option>
+        <option value="ipsum">Ipsum</option>
+        <option value="dolor">Dolor</option>
+    </select>
+    <a href="#">Blog</a>
+    <a href="#">About</a>
+    <a href="#">FAQ</a>
+</div>
+
+<div class="search-wrapper">
+    <input type="checkbox" name="" id="search-toggle">
+    <label class="search-container">&#128269</label>
+<div class="search-input">
+    <input type="text" placeholder="Search...">
+</div>
+</div>
+
+<input type="checkbox" name="" id="mobile-toggle">
+<label for="mobile-toggle" class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</label>
+<!-- mobile menu overlay -->
+<div class="overlay"></div>
+<div class="mobile-menu">
+    
+    <label for="mobile-toggle" class="close-btn">&times</label>
+    <div class="mobile-menu-content">
+    <a href="#" class="active">Home</a>
+    <select name="" id="">
+        <option value="">Services</option>
+        <option value="lorem">Lorem</option>
+        <option value="ipsum">Ipsum</option>
+        <option value="dolor">Dolor</option>
+    </select>
+    <a href="#">Blog</a>
+    <a href="#">About</a>
+    <a href="#">FAQ</a>
+</div>
+</div>
+    </header>
+    <div class="container1">
+<div class="text">
+<h1> Subscribe Now <br> <span class="news"> to Our Newsletter</span></h1>
+<span style="color: #fff;">Lorem ipsum dolor sit amet consectetur adipisicing elit. At esse facilis <br> dolorum nihil quas consectetur, totam perferendis eius, temporibus <br> voluptatibus eum animi harum atque, tempore et expedita. Repellendus impedit <br> beatae dolorum quos quaerat eius officia nesciunt, quam atque provident amet non <br>magni ipsam, minima tenetur delectus ex. Dolorum, numquam odio!</span><br>
+<input type="text" placeholder="Name" id="name"><br>
+<input type="email" id="email" placeholder="Email"><br>
+<button>Send &#9656</button>
+</div>
+<div class="image">
+<img src="office.jpg" alt="">
+</div>
+</div>
+</body>
+</html>
